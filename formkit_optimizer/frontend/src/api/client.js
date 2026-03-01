@@ -1,6 +1,6 @@
 // In production, set VITE_API_URL to your Render backend URL (e.g. https://formkit-api.onrender.com)
 // In development, falls back to '/api' which is proxied by Vite to localhost:8000
-const API_BASE = import.meta.env.VITE_API_URL
+export const API_BASE = import.meta.env.VITE_API_URL
   ? `${import.meta.env.VITE_API_URL}/api`
   : '/api';
 

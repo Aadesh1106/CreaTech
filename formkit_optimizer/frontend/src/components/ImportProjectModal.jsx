@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 import { X, Upload, FileSpreadsheet, Download, CheckCircle, AlertTriangle, Loader2, FileUp } from 'lucide-react'
+import { API_BASE } from '../api/client'
 
-const API_BASE = '/api'
 
 async function downloadTemplate() {
   const res = await fetch(`${API_BASE}/import/template`)
