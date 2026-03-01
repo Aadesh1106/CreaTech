@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #334155 transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 100px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+  }
+
+  body {
+    @apply bg-surface-950 text-slate-200;
+    font-feature-settings: "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    @apply bg-brand-600/40 text-white;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/[0.04] backdrop-blur-xl border border-white/[0.06] rounded-2xl;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:bg-white/[0.07] hover:border-white/[0.12] hover:shadow-lg hover:shadow-brand-500/5;
+  }
+
+  .stat-card {
+    @apply glass-card p-6 relative overflow-hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    @apply absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-brand-500/50 to-transparent;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-400 to-cyan-400;
+  }
+
+  .glow-brand {
+    box-shadow: 0 0 20px rgba(51, 129, 255, 0.15), 0 0 60px rgba(51, 129, 255, 0.05);
+  }
+
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium
+           text-slate-400 hover:text-white hover:bg-white/[0.06]
+           transition-all duration-200;
+  }
+
+  .sidebar-link.active {
+    @apply text-white bg-brand-600/20 border border-brand-500/20;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+
+  .badge-success {
+    @apply badge bg-emerald-500/15 text-emerald-400 ring-1 ring-emerald-500/20;
+  }
+
+  .badge-warning {
+    @apply badge bg-amber-500/15 text-amber-400 ring-1 ring-amber-500/20;
+  }
+
+  .badge-info {
+    @apply badge bg-brand-500/15 text-brand-400 ring-1 ring-brand-500/20;
+  }
+
+  .badge-neutral {
+    @apply badge bg-slate-500/15 text-slate-400 ring-1 ring-slate-500/20;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl
+           bg-brand-600 hover:bg-brand-500 text-white font-semibold text-sm
+           transition-all duration-200 shadow-lg shadow-brand-600/25
+           hover:shadow-brand-500/40 active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl
+           bg-white/[0.06] hover:bg-white/[0.1] text-slate-200 font-medium text-sm
+           border border-white/[0.08] hover:border-white/[0.15]
+           transition-all duration-200 active:scale-[0.98];
+  }
+
+  .data-table {
+    @apply w-full text-sm;
+  }
+
+  .data-table thead th {
+    @apply text-xs font-semibold text-slate-400 uppercase tracking-wider
+           py-3 px-4 text-left border-b border-white/[0.06];
+  }
+
+  .data-table tbody td {
+    @apply py-3 px-4 border-b border-white/[0.04];
+  }
+
+  .data-table tbody tr {
+    @apply transition-colors hover:bg-white/[0.03];
+  }
+
+  .input-field {
+    @apply w-full bg-white/[0.05] border border-white/[0.08] rounded-xl px-4 py-2.5
+           text-white placeholder-slate-500 text-sm
+           focus:outline-none focus:ring-2 focus:ring-brand-500/40 focus:border-brand-500/40
+           transition-all duration-200;
+  }
+}
+
+/* Custom chart tooltip */
+.recharts-tooltip-wrapper {
+  @apply !outline-none;
+}
+
+.custom-tooltip {
+  @apply glass-card p-3 !border-white/10 shadow-xl;
+}
+
+/* Animated gradient border */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animated-border {
+  background: linear-gradient(90deg, #3381ff, #06b6d4, #8b5cf6, #3381ff);
+  background-size: 300% 100%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+/* Number counting animation */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-count {
+  animation: countUp 0.6s ease-out forwards;
+}
