@@ -1,8 +1,7 @@
 """
 FormKit Optimizer — Production FastAPI Backend
 ===============================================
-Full REST API with SQLite backing, real optimization integration,
-CORS, WebSocket support, and comprehensive analytics endpoints.
+
 """
 
 from __future__ import annotations
